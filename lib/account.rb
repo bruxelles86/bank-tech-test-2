@@ -7,4 +7,8 @@ def initialize(balance, log)
   @log = log.new
 end
 
+def deposit(deposit_amount)
+  @balance.increment(deposit_amount)
+end
+
 end
