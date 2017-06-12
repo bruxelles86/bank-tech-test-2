@@ -2,7 +2,7 @@ class Account
 
 attr_reader :balance, :log
 
-@date = Time.new
+@date = Time.now.strftime('%m/%d/%Y')
 
 def initialize(balance, log)
   @balance = balance.new
@@ -14,8 +14,9 @@ def deposit(deposit_amount, date=@date)
   @log.store(deposit_amount, 0, @balance.amount, date)
 end
 
-def withdraw(withdrawal_amount)
+def withdraw(withdrawal_amount, date=@date)
   @balance.reduce(withdrawal_amount)
+  @log.store(0, withdrawal_amount, @balance.amount, date)
 end
 
 end
