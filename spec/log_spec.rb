@@ -8,7 +8,13 @@ describe Log do
     expect(log.transactions.length).to eq(0)
   end
 
-  it 'stores correct details for deposits'
+  it 'stores correct details for deposits' do
+    log.save('10/06/2017', 10, 0, 100)
+    expect(log.transactions[0][:date]).to eq('10/06/2017')
+    expect(log.transactions[0][:credit]).to eq(10)
+    expect(log.transactions[0][:debit]).to eq(0)
+    expect(log.transactions[0][:balance]).to eq(100)
+  end
 
   it 'stores correct details for withdrawals'
 
