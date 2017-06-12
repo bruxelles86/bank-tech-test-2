@@ -1,9 +1,13 @@
 require 'account'
 
 describe Account do
-  let(:account) { described_class.new }
+  let(:balance) { 'Dummy balance' }
+  let(:statement) { 'Dummy statement' }
+  let(:account) { described_class.new(balance, statement) }
 
-  it 'has a balance'
+  it 'has a balance' do
+    expect(account.balance).to be_truthy
+  end
 
   it 'has a record of transactions'
 
