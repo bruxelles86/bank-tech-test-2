@@ -7,7 +7,10 @@ describe Balance do
     expect(balance.amount).to eq(0)
   end
 
-  it 'increments by amounts deposited'
+  it 'increments by amounts deposited' do
+    balance.increment(10)
+    expect(balance.amount).to eq(10)
+  end
 
   it 'reduces by amounts withdrawn'
 
