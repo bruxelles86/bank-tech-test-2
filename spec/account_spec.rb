@@ -5,8 +5,8 @@ describe Account do
   before(:each)do
     balance = double
     log = double
-    allow(balance).to receive(:new) { true }
-    allow(log).to receive(:new) { true }
+    allow(balance).to receive(:new) { balance }
+    allow(log).to receive(:new) { log }
     @account = Account.new(balance, log)
   end
 
@@ -18,7 +18,11 @@ describe Account do
     expect(@account.log).to be_truthy
   end
 
-  it 'initiates deposits'
+  it 'initiates deposits' do
+    allow(@account.balance).to receive(:increment)
+    @account.deposit(10)
+    expect(@account.balance).to have_received(:increment).with(10)
+  end
 
   it 'initiates the storage of transaction data after a deposit'
 
