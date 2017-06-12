@@ -5,14 +5,16 @@ describe Account do
   before(:each)do
     balance = double
     log = double
+    printer = double
     allow(balance).to receive(:increment)
     allow(balance).to receive(:reduce)
-    allow(balance).to receive(:new) { balance }
     allow(balance).to receive(:amount)
     allow(log).to receive(:store)
-    allow(log).to receive(:print)
+    allow(printer).to receive(:print)
+    allow(balance).to receive(:new) { balance }
     allow(log).to receive(:new) { log }
-    @account = Account.new(balance, log)
+    allow(printer).to receive(:new) { printer }
+    @account = Account.new(balance, log, printer)
   end
 
   it 'has a balance' do
@@ -43,8 +45,8 @@ describe Account do
     expect(@account.balance).to have_received(:reduce).with(10)
   end
 
-  it 'calls log to initiate the printing of a statement to the console' do
+  it 'initiates the printing of a statement to the console' do
     @account.print_statement
-    expect(@account.log).to have_received(:print)
+    expect(@account.printer).to have_received(:print)
   end
 end

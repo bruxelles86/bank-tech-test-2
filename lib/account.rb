@@ -3,7 +3,7 @@ class Account
 
   @date = Time.now.strftime('%m/%d/%Y')
 
-  def initialize(balance, log)
+  def initialize(balance, log, printer)
     @balance = balance.new
     @log = log.new
   end
