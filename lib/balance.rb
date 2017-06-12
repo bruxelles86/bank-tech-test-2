@@ -3,4 +3,8 @@ class Balance
   def initialize
     @amount = 0
   end
+
+  def increment(amount_to_increase)
+    @amount += amount_to_increase
+  end
 end
