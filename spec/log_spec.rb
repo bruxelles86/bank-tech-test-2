@@ -1,7 +1,7 @@
-require 'statement'
+require 'Log'
 
-describe Statement do
-  let(:statement) { described_class.new }
+describe Log do
+  let(:log) { described_class.new }
 
   it 'initializes with an empty transactions array'
 
