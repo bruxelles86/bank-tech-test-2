@@ -23,11 +23,4 @@ describe Log do
     expect(log.transactions[0][:debit]).to eq(100)
     expect(log.transactions[0][:balance]).to eq(0)
   end
-
-  it 'stores dates passed as an argument'
-
-  it 'stores the current date if no date argument is given'
-
-  it 'initiates the printing of statements to the console'
-
 end
