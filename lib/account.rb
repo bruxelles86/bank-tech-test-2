@@ -6,8 +6,6 @@ require_relative './printer.rb'
 class Account
   attr_reader :balance, :log, :printer
 
-  @date = Time.now.strftime('%m/%d/%Y')
-
   def initialize(balance, log, printer)
     @balance = balance.new
     @log = log.new
@@ -16,12 +14,12 @@ class Account
 
   def deposit(deposit_amount, date=@date)
     @balance.increment(deposit_amount)
-    @log.store(date, deposit_amount, 0, @balance.amount)
+    @log.save(date, deposit_amount, 0, @balance.amount)
   end
 
-  def withdraw(withdrawal_amount, date=@date)
+  def withdraw(withdrawal_amount, date=Time.now.strftime('%m/%d/%Y'))
     @balance.reduce(withdrawal_amount)
-    @log.store(date, 0, withdrawal_amount, @balance.amount)
+    @log.save(date, 0, withdrawal_amount, @balance.amount)
   end
 
   def print_statement

@@ -8,7 +8,7 @@ describe Account do
     allow(balance).to receive(:increment)
     allow(balance).to receive(:reduce)
     allow(balance).to receive(:amount)
-    allow(log).to receive(:store)
+    allow(log).to receive(:save)
     allow(printer).to receive(:print)
     allow(balance).to receive(:new) { balance }
     allow(log).to receive(:new) { log }
@@ -31,12 +31,12 @@ describe Account do
 
   it 'initiates the storage of transaction data after a deposit' do
     @account.deposit(10)
-    expect(@account.log).to have_received(:store).with(any_args)
+    expect(@account.log).to have_received(:save).with(any_args)
   end
 
   it 'initiates the storage of transaction data after a withdrawal' do
     @account.withdraw(10)
-    expect(@account.log).to have_received(:store).with(any_args)
+    expect(@account.log).to have_received(:save).with(any_args)
   end
 
   it 'initiates withdrawals' do
@@ -47,5 +47,12 @@ describe Account do
   it 'initiates the printing of a statement to the console' do
     @account.print_statement
     expect(@account.printer).to have_received(:print).with(no_args)
+  end
+
+  it 'initiates log save with today\'s date if none is given as an argument' do
+    @account.withdraw(10)
+    expect(@account.log).to have_received(:save).with(
+          Time.now.strftime('%m/%d/%Y'), anything, anything, anything
+          )
   end
 end
