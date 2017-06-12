@@ -12,7 +12,7 @@ class Account
     @printer = printer.new
   end
 
-  def deposit(deposit_amount, date=@date)
+  def deposit(deposit_amount, date=Time.now.strftime('%m/%d/%Y'))
     @balance.increment(deposit_amount)
     @log.save(date, deposit_amount, 0, @balance.amount)
   end
