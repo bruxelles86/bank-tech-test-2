@@ -1,11 +1,12 @@
 class Account
-  attr_reader :balance, :log
+  attr_reader :balance, :log, :printer
 
   @date = Time.now.strftime('%m/%d/%Y')
 
   def initialize(balance, log, printer)
     @balance = balance.new
     @log = log.new
+    @printer = printer.new
   end
 
   def deposit(deposit_amount, date=@date)
@@ -19,6 +20,6 @@ class Account
   end
 
   def print_statement
-    @log.print
+    @printer.print
   end
 end

@@ -47,6 +47,6 @@ describe Account do
 
   it 'initiates the printing of a statement to the console' do
     @account.print_statement
-    expect(@account.printer).to have_received(:print)
+    expect(@account.printer).to have_received(:print).with(no_args)
   end
 end
