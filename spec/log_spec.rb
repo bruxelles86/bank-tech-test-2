@@ -3,7 +3,10 @@ require 'Log'
 describe Log do
   let(:log) { described_class.new }
 
-  it 'initializes with an empty transactions array'
+  it 'initializes with an empty transactions array' do
+    expect(log.transactions).to be_kind_of(Array)
+    expect(log.transactions.length).to eq(0)
+  end
 
   it 'stores correct details for deposits'
 
