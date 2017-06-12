@@ -1,3 +1,7 @@
+require_relative './balance.rb'
+require_relative './log.rb'
+require_relative './printer.rb'
+
 # acts as a user interface
 class Account
   attr_reader :balance, :log, :printer
