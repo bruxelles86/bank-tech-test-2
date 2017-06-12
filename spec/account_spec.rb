@@ -17,5 +17,5 @@ describe Account do
 
   it 'records withdrawal details'
 
-  it 'initiates the printing of a statement to the console'
+  it 'calls statement to initiate the printing of a statement to the console'
 end
