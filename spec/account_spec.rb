@@ -1,12 +1,19 @@
 require 'account'
 
 describe Account do
-  let(:balance) { 'Dummy balance' }
-  let(:statement) { 'Dummy statement' }
-  let(:account) { described_class.new(balance, statement) }
+
+  before(:each)do
+    balance = double
+    statement = double
+    allow(balance).to receive(:new) { true }
+    allow(statement).to receive(:new) { true }
+    @account = Account.new(balance, statement)
+  end
+
+  # let(:account) { described_class.new(balance, statement) }
 
   it 'has a balance' do
-    expect(account.balance).to be_truthy
+    expect(@account.balance).to be_truthy
   end
 
   it 'has a record of transactions'
