@@ -1,7 +1,6 @@
 require 'account'
 
 describe Account do
-
   before(:each)do
     balance = double
     log = double

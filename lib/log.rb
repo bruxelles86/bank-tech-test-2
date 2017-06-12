@@ -1,3 +1,4 @@
+# records details of all transactions
 class Log
   attr_reader :transactions
   def initialize

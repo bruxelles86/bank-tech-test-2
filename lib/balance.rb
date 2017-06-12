@@ -1,3 +1,4 @@
+# maintains a record of the amount of money currently in an account
 class Balance
   attr_reader :amount
   def initialize

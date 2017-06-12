@@ -1,3 +1,4 @@
+# acts as a user interface
 class Account
   attr_reader :balance, :log, :printer
 
