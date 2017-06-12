@@ -28,12 +28,14 @@ describe Account do
   end
 
   it 'initiates the storage of transaction data after a deposit' do
-    number = instance_of(Fixnum)
     @account.deposit(10)
     expect(@account.log).to have_received(:store).with(any_args)
   end
 
-  it 'initiates the storage of transaction data after a withdrawal'
+  it 'initiates the storage of transaction data after a withdrawal' do
+    @account.withdraw(10)
+    expect(@account.log).to have_received(:store).with(any_args)
+  end
 
   it 'initiates withdrawals' do
     @account.withdraw(10)
