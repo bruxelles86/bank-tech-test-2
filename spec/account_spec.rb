@@ -8,6 +8,8 @@ describe Account do
     allow(balance).to receive(:increment)
     allow(balance).to receive(:reduce)
     allow(balance).to receive(:new) { balance }
+    allow(balance).to receive(:amount)
+    allow(log).to receive(:store)
     allow(log).to receive(:new) { log }
     @account = Account.new(balance, log)
   end
@@ -26,10 +28,9 @@ describe Account do
   end
 
   it 'initiates the storage of transaction data after a deposit' do
-    allow(@account.log).to receive(:store)
     number = instance_of(Fixnum)
     @account.deposit(10)
-    expect(@account.log).to have_received(:store).with(number, number, number)
+    expect(@account.log).to have_received(:store).with(any_args)
   end
 
   it 'initiates the storage of transaction data after a withdrawal'
