@@ -28,7 +28,11 @@ describe Account do
 
   it 'initiates the storage of transaction data after a withdrawal'
 
-  it 'initiates withdrawals'
+  it 'initiates withdrawals' do
+    allow(@account.balance).to receive(:reduce)
+    @account.withdraw(10)
+    expect(@account.balance).to have_received(:reduce).with(10)
+  end
 
   it 'records withdrawal details'
 
