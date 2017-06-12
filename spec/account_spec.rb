@@ -5,6 +5,8 @@ describe Account do
   before(:each)do
     balance = double
     log = double
+    allow(balance).to receive(:increment)
+    allow(balance).to receive(:reduce)
     allow(balance).to receive(:new) { balance }
     allow(log).to receive(:new) { log }
     @account = Account.new(balance, log)
@@ -19,17 +21,20 @@ describe Account do
   end
 
   it 'initiates deposits' do
-    allow(@account.balance).to receive(:increment)
     @account.deposit(10)
     expect(@account.balance).to have_received(:increment).with(10)
   end
 
-  it 'initiates the storage of transaction data after a deposit'
+  it 'initiates the storage of transaction data after a deposit' do
+    allow(@account.log).to receive(:store)
+    number = instance_of(Fixnum)
+    @account.deposit(10)
+    expect(@account.log).to have_received(:store).with(number, number, number)
+  end
 
   it 'initiates the storage of transaction data after a withdrawal'
 
   it 'initiates withdrawals' do
-    allow(@account.balance).to receive(:reduce)
     @account.withdraw(10)
     expect(@account.balance).to have_received(:reduce).with(10)
   end
