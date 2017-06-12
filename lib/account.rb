@@ -17,4 +17,8 @@ class Account
     @balance.reduce(withdrawal_amount)
     @log.store(0, withdrawal_amount, @balance.amount, date)
   end
+
+  def print_statement
+    @log.print
+  end
 end
