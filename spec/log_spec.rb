@@ -16,7 +16,13 @@ describe Log do
     expect(log.transactions[0][:balance]).to eq(100)
   end
 
-  it 'stores correct details for withdrawals'
+  it 'stores correct details for withdrawals' do
+    log.save('10/06/2017', 0, 100, 0)
+    expect(log.transactions[0][:date]).to eq('10/06/2017')
+    expect(log.transactions[0][:credit]).to eq(0)
+    expect(log.transactions[0][:debit]).to eq(100)
+    expect(log.transactions[0][:balance]).to eq(0)
+  end
 
   it 'stores dates passed as an argument'
 
