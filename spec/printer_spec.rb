@@ -3,7 +3,7 @@ require 'printer'
 describe Printer do
   let(:printer) { described_class.new }
 
-  it 'correctly prints a statement' do
+  it 'correctly prints a statement with deposits' do
     log = instance_double("log", :transactions => [{ date: '01/01/2000',
                                                      credit: 10.00, debit: 0,
                                                      balance: 10.00 }] )

@@ -4,9 +4,9 @@ class Printer
     puts 'Date || Credit || Debit || Balance'
     transactions.each do |row|
       if row[:credit] > 0
-        puts "#{row[:date]} || #{row[:credit]} ||  || #{row[:balance]}"
+        puts "#{row[:date]} || #{'%.2f' % row[:credit]} ||  || #{'%.2f' % row[:balance]}"
       elsif row[:debit] > 0
-        puts "#{row[:date]} ||  || #{row[:debit]} || #{row[:balance]}"
+        puts "#{row[:date]} ||  || #{'%.2f' % row[:debit]} || #{'%.2f' % row[:balance]}"
       end
     end
   end
