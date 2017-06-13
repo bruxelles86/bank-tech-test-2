@@ -1,7 +1,7 @@
 require 'account'
 
 describe Account do
-  before(:each)do
+  before(:each) do
     balance = double
     log = double
     printer = double
@@ -12,6 +12,7 @@ describe Account do
     allow(printer).to receive(:print)
     allow(balance).to receive(:new) { balance }
     allow(log).to receive(:new) { log }
+    allow(log).to receive(:transactions).and_return([])
     allow(printer).to receive(:new) { printer }
     @account = Account.new(balance, log, printer)
   end
@@ -46,7 +47,7 @@ describe Account do
 
   it 'initiates the printing of a statement to the console' do
     @account.print_statement
-    expect(@account.printer).to have_received(:print).with(no_args)
+    expect(@account.printer).to have_received(:print).with(instance_of(Array))
   end
 
   it 'withdrawals log today\'s date if none is given as an argument' do

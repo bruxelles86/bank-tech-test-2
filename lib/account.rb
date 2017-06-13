@@ -23,6 +23,6 @@ class Account
   end
 
   def print_statement
-    @printer.print
+    @printer.print(@log.transactions)
   end
 end
