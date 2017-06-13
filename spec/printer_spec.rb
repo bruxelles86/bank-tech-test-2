@@ -1,18 +1,14 @@
 require 'printer'
 
 describe Printer do
-    before(:each) do
-    sorter = double("sorter")
-    allow(sorter).to receive(:new) { sorter }
-    allow(sorter).to receive(:sort) { [] }
-    @printer = Printer.new(sorter)
+  before(:each) do
+    allow(sorter).to receive_messages(:new => sorter, :sort => [])
   end
 
   let(:transactions) { [] }
+  let(:sorter) { double }
 
   it 'correctly prints a statement with deposits' do
-      sorter = double("sorter")
-      allow(sorter).to receive(:new) { sorter }
       allow(sorter).to receive(:sort).with(anything) { [{ date: '01/01/2000',
                                                    credit: 10.00, debit: 0,
                                                    balance: 10.00 }] }
@@ -24,8 +20,6 @@ describe Printer do
   end
 
   it 'correctly prints a statement with withdrawals' do
-      sorter = double("sorter")
-      allow(sorter).to receive(:new) { sorter }
       allow(sorter).to receive(:sort).with(anything) { [{ date: '01/01/2000',
                                                      credit: 0, debit: 15.00,
                                                      balance: 20.00 }] }
@@ -37,6 +31,7 @@ describe Printer do
   end
 
   it 'calls sorter to put transactions in reverse chronological order' do
+    @printer = Printer.new(sorter)
     @printer.print(transactions)
     expect(@printer.sorter).to have_received(:sort)
   end
