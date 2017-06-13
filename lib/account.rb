@@ -6,10 +6,10 @@ require_relative './printer.rb'
 class Account
   attr_reader :balance, :log, :printer
 
-  def initialize(balance, log, printer)
+  def initialize(balance, log, printer, sorter)
     @balance = balance.new
     @log = log.new
-    @printer = printer.new
+    @printer = printer.new(sorter)
   end
 
   def deposit(deposit_amount, date=Time.now.strftime('%m/%d/%Y'))

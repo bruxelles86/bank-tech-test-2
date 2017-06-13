@@ -2,13 +2,13 @@ require 'account'
 
 describe Account do
   before(:each) do
-    balance, log, printer = double, double, double
+    balance, log, printer, sorter = double, double, double, double
     allow(balance).to receive_messages(:increment => nil, :reduce => nil,
                                        :amount => nil, :new => balance)
     allow(log).to receive_messages(:save => nil, :new => log,
                                    :transactions => [])
     allow(printer).to receive_messages(:print => nil, :new => printer)
-    @account = Account.new(balance, log, printer)
+    @account = Account.new(balance, log, printer, sorter)
   end
 
   it 'has a balance' do
