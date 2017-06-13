@@ -11,9 +11,9 @@ class Printer
     puts 'Date || Credit || Debit || Balance'
     sorted_transactions.each do |row|
       if row[:credit] > 0
-        puts "#{row[:date]} || #{'%.2f' % row[:credit]} ||  || #{'%.2f' % row[:balance]}"
+        puts "#{row[:date]} || #{format('%.2f', row[:credit])} ||  || #{format('%.2f', row[:balance])}"
       elsif row[:debit] > 0
-        puts "#{row[:date]} ||  || #{'%.2f' % row[:debit]} || #{'%.2f' % row[:balance]}"
+        puts "#{row[:date]} ||  || #{format('%.2f', row[:debit])} || #{format('%.2f', row[:balance])}"
       end
     end
   end
