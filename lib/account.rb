@@ -13,12 +13,12 @@ class Account
     @printer = printer.new(sorter)
   end
 
-  def deposit(deposit_amount, date=Time.now.strftime('%m/%d/%Y'))
+  def deposit(deposit_amount, date = Time.now.strftime('%m/%d/%Y'))
     @balance.increment(deposit_amount)
     @log.save(date, deposit_amount, 0, @balance.amount)
   end
 
-  def withdraw(withdrawal_amount, date=Time.now.strftime('%m/%d/%Y'))
+  def withdraw(withdrawal_amount, date = Time.now.strftime('%m/%d/%Y'))
     @balance.reduce(withdrawal_amount)
     @log.save(date, 0, withdrawal_amount, @balance.amount)
   end

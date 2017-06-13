@@ -1,5 +1,6 @@
 require 'account'
 
+# Integration test pulling together all parts of the program
 describe Account do
   let(:account) { described_class.new(Balance, Log, Printer, Sorter) }
 
