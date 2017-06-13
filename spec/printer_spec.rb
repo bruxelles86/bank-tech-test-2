@@ -46,6 +46,8 @@ describe Printer do
   # end
 
   it 'calls sorter to put transactions in reverse chronological order' do
-    expect
+    transactions = double("transactions", :each => nil)
+    @printer.print(transactions)
+    expect(@printer.sorter).to have_received(:sort)
   end
 end
