@@ -2,18 +2,13 @@ require 'account'
 
 describe Account do
   before(:each) do
-    balance = double
+    balance = double("balance")
     log = double
     printer = double
-    allow(balance).to receive(:increment)
-    allow(balance).to receive(:reduce)
-    allow(balance).to receive(:amount)
-    allow(log).to receive(:save)
-    allow(printer).to receive(:print)
-    allow(balance).to receive(:new) { balance }
-    allow(log).to receive(:new) { log }
-    allow(log).to receive(:transactions).and_return([])
-    allow(printer).to receive(:new) { printer }
+    allow(balance).to receive_messages(:increment => nil, :reduce => nil,
+                                       :amount => nil, :new => balance)
+    allow(log).to receive_messages(:save => nil, :new => log, :transactions => [])
+    allow(printer).to receive_messages(:print => nil, :new => printer)
     @account = Account.new(balance, log, printer)
   end
 
