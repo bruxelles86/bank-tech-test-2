@@ -1,6 +1,7 @@
 require_relative './balance.rb'
 require_relative './log.rb'
 require_relative './printer.rb'
+require_relative './sorter.rb'
 
 # acts as a user interface
 class Account
