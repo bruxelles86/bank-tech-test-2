@@ -1,7 +1,7 @@
 require 'account'
 
 describe Account do
-  let(:account) { described_class.new(Balance, Log, Printer) }
+  let(:account) { described_class.new(Balance, Log, Printer, Sorter) }
 
   it 'prints correct statement matching task acceptance criteria' do
     account.deposit(1000, '10/01/2012')
