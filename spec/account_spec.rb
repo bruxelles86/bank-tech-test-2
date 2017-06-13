@@ -47,28 +47,28 @@ describe Account do
   it 'withdrawals log today\'s date if none is given as an argument' do
     @account.withdraw(10)
     expect(@account.log).to have_received(:save).with(
-     Time.now.strftime('%m/%d/%Y'), anything, anything, anything
-          )
+      Time.now.strftime('%m/%d/%Y'), anything, anything, anything
+    )
   end
 
   it 'deposits log today\'s date if none is given as an argument' do
     @account.deposit(10)
     expect(@account.log).to have_received(:save).with(
-          Time.now.strftime('%m/%d/%Y'), anything, anything, anything
-          )
+      Time.now.strftime('%m/%d/%Y'), anything, anything, anything
+    )
   end
 
   it 'withdrawals log date passed as argument' do
-    @account.withdraw(10, "01/01/2000")
+    @account.withdraw(10, '01/01/2000')
     expect(@account.log).to have_received(:save).with(
-          "01/01/2000", anything, anything, anything
-          )
+      '01/01/2000', anything, anything, anything
+    )
   end
 
   it 'deposits log date passed as argument' do
-    @account.deposit(10, "01/01/2000")
+    @account.deposit(10, '01/01/2000')
     expect(@account.log).to have_received(:save).with(
-          "01/01/2000", anything, anything, anything
-          )
+      '01/01/2000', anything, anything, anything
+    )
   end
 end

@@ -16,5 +16,4 @@ describe Balance do
     balance.reduce(10)
     expect(balance.amount).to eq(-10)
   end
-
 end
