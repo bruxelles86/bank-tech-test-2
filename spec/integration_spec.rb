@@ -15,4 +15,14 @@ describe Account do
     "\n10/01/2012 || 1000.00 ||  || 1000.00\n"
     ).to_stdout
   end
+
+  it 'prints correct statement reflecting UK/US date format difference' do
+    account.deposit(2000, '10/01/2012')
+    account.deposit(1000, '01/10/2012')
+    expect { account.print_statement }.to output(
+      'Date || Credit || Debit || Balance'\
+    "\n01/10/2012 || 1000.00 ||  || 3000.00"\
+    "\n10/01/2012 || 2000.00 ||  || 2000.00\n"
+    ).to_stdout
+  end
 end
