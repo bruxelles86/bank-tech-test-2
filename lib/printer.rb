@@ -1,5 +1,8 @@
 # prints account statements to the console
 class Printer
+  def initialize(sorter)
+    @sorter = sorter.new
+  end
   def print(transactions)
     puts 'Date || Credit || Debit || Balance'
     transactions.each do |row|
