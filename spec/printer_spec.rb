@@ -2,7 +2,7 @@ require 'printer'
 
 describe Printer do
   before(:each) do
-    allow(sorter).to receive_messages(:new => sorter, :sort => [])
+    allow(sorter).to receive_messages(new: sorter, sort: [])
   end
 
   let(:transactions) { double }
