@@ -2,7 +2,10 @@ require 'account'
 
 describe Account do
   before(:each) do
-    balance, log, printer, sorter = double, double, double, double
+    balance = double
+    log = double
+    printer = double
+    sorter = double
     allow(balance).to receive_messages(increment: nil, reduce: nil,
                                        amount: nil, new: balance)
     allow(log).to receive_messages(save: nil, new: log,
