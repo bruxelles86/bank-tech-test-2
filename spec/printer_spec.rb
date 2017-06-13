@@ -29,10 +29,14 @@ describe Printer do
                                                     balance: 20.00 },
                                                     { date: '15/07/2000',
                                                     credit: 0, debit: 15.00,
+                                                    balance: 20.00 },
+                                                    { date: '11/08/2005',
+                                                    credit: 0, debit: 15.00,
                                                     balance: 20.00 }] )
       expect { printer.print(log.transactions) }.to output(
       'Date || Credit || Debit || Balance'\
       "\n15/07/2000 ||  || 15.00 || 20.00\n"\
+      "\n11/08/2005 ||  || 15.00 || 20.00\n"\
       "\n01/01/2017 ||  || 15.00 || 20.00\n"
       ).to_stdout
   end
