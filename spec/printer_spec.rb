@@ -3,7 +3,7 @@ require 'printer'
 describe Printer do
   before(:each) do
     sorter = double
-    allow(sorter).to receive_messages(:sort => nil, :new => sorter)
+    allow(sorter).to receive_messages(:sort => [], :new => sorter)
     @printer = Printer.new(sorter)
   end
 
